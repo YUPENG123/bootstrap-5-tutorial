@@ -1,0 +1,15 @@
+name: SSH Debug Session
+
+on: 
+  workflow_dispatch: # 允许你在 GitHub 页面上手动触发运行
+
+jobs:
+  ssh-debug:
+    runs-on: ubuntu-latest # 你也可以选择 windows-latest 或 macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Tmate SSH Session
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 60 # 设置超时时间，避免浪费免费额度
